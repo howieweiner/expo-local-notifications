@@ -7,15 +7,37 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "lint": "npx eslint --fix",
+    "format": "npx prettier --write .",
+    "lint:ci": "npx --no-install tsc --noEmit && npx eslint ."
   },
   "dependencies": {
+    "@expo/config-plugins": "^4.1.0",
+    "@react-native-community/eslint-config": "^3.1.0",
+    "@types/debug": "^4.1.7",
+    "@types/react": "~17.0.21",
+    "@types/react-native": "~0.67.6",
+    "@typescript-eslint/eslint-plugin": "^5.37.0",
+    "@typescript-eslint/parser": "^5.37.0",
+    "eslint": "8.22",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-react-native": "^4.0.0",
+    "eslint-plugin-simple-import-sort": "^8.0.0",
     "expo": "~45.0.0",
+    "expo-device": "~4.2.0",
+    "expo-notifications": "~0.15.4",
     "expo-status-bar": "~1.3.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "pretty-quick": "^3.1.3",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-native": "0.68.2",
-    "react-native-web": "0.17.7"
+    "react-native-web": "0.17.7",
+    "typescript": "~4.3.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

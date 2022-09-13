@@ -1,0 +1,7 @@
+.expo-shared
+.expo
+node_modules
+.idea
+.vscode
+coverage
+
