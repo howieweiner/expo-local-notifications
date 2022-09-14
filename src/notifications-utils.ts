@@ -5,7 +5,7 @@ async function registerNotificationsHandler() {
   console.log('registering Notifications Handler')
   await Notifications.setNotificationChannelAsync('messages', {
     name: 'Messages',
-    importance: AndroidImportance.DEFAULT,
+    importance: AndroidImportance.MAX,
   })
 
   Notifications.setNotificationHandler({
@@ -27,9 +27,11 @@ const scheduleInstantLocalNotification = async () => {
   const schedulingOptions = {
     content: {
       title: 'You have mail!',
+    },
+    trigger: {
+      seconds: 2,
       channelId: 'messages',
     },
-    trigger: null,
   }
 
   await Notifications.scheduleNotificationAsync(schedulingOptions)
