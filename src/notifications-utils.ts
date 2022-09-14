@@ -1,5 +1,5 @@
 import * as Notifications from 'expo-notifications'
-import { AndroidImportance } from 'expo-notifications'
+import { AndroidImportance, AndroidNotificationPriority } from 'expo-notifications'
 
 function buildNotificationHandler(withSound = false) {
   return {
@@ -31,7 +31,11 @@ const scheduleInstantLocalNotification = async (withSound = false) => {
     content: {
       title: 'You have mail!',
     },
-    trigger: null,
+    trigger: {
+      seconds: 2,
+      channelId: 'messages',
+    },
+    priority: AndroidNotificationPriority.MAX,
   }
 
   await Notifications.scheduleNotificationAsync(schedulingOptions)
