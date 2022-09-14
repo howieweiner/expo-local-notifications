@@ -8,24 +8,27 @@ import useAppState from './src/useAppState'
 export default function App() {
   const { isActive } = useAppState()
 
-  const sendNotification = () => {
+  const sendNotification = (withSound = false) => {
     if (!isActive) {
       console.log('App is not in foreground. Not sending notification')
       return
     }
 
-    scheduleInstantLocalNotification().then(() => {
-      console.log('scheduled instant local notification')
-    })
+    scheduleInstantLocalNotification(withSound)
   }
 
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
       <NotificationsHandler />
-      <TouchableOpacity onPress={sendNotification} style={styles.button}>
-        <Text style={styles.text}>Create a notification</Text>
-      </TouchableOpacity>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity onPress={() => sendNotification()} style={styles.button}>
+          <Text style={styles.text}>Notification without sound</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => sendNotification(true)} style={styles.button}>
+          <Text style={styles.text}>Notification with sound</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   )
 }
@@ -37,9 +40,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  buttonContainer: {
+    display: 'flex',
+  },
   button: {
-    backgroundColor: 'blue',
-    padding: 4,
+    backgroundColor: 'darkslategray',
+    padding: 8,
+    margin: 8,
   },
   text: {
     fontSize: 20,
